@@ -1,0 +1,50 @@
+spring:
+  #配置数据库
+  datasource:
+    url: jdbc:mysql://localhost:3306/db9?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&allowMultiQueries=true&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+  #redis的配置
+  redis:
+    port: 6379
+    password: 123456
+    database: 3
+    host: 42.194.206.10
+  #thymeleaf模板引擎可以完全替代
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html;charset=utf-8
+    suffix: .html
+  #  session设定
+  session:
+    store-type: none
+#  指定mapper文件路径
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+#限定请求之前需不需要安全控制
+#security:
+#  basic:
+#    enabled: false
+
+net:
+  seehope:
+    webProperties:
+      loginType: JSON
+        #loginPage:
+    social:
+      qq:
+        appid: seehope
+        appsecret: seehopesecret
+        providerId: qq
+#oauth2设置
+security:
+  oauth2:
+    client:
+      client-secret: seehopesecret
+      client-id: seehope

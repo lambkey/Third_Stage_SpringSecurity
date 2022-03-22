@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <link rel="stylesheet" href="./css/login.css"/>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+
+<div id="login-box">
+  <h1>Login</h1>
+  <form action="/authentication/form" method="post">
+  <div class="form">
+    <div class="item">
+      <i class="fa fa-github-alt" style="font-size:24px"></i>
+      <input type="text" placeholder="username" name="username">
+    </div>
+    <div class="item">
+      <i class="fa fa-search" style="font-size:24px"></i>
+      <input type="password" placeholder="password" name="password">
+    </div>
+    <div>
+      <input type="text" placeholder="validateCode" name="validateCode">
+      <img src="/code/image">
+    </div>
+    <div>
+      记住我:<input type="checkbox" name="remember-me" checked="checked" value="true">
+    </div>
+  </div>
+  <button type="submit">Login</button>
+  </form>
+</div>
+<fieldset>
+  <legend>SmsCodeLogin</legend>
+  <form method="post" action="/authentication/ssm">
+    <table>
+      <tr>
+        <td>phone:</td>
+        <td><input type="text" placeholder="phone" name="phone" id="phone"></td>
+        <td>
+          <button id="sms" type="button">click to send sms</button>
+        </td>
+      </tr>
+      <tr>
+        <td>validateCode:</td>
+        <td><input type="text" placeholder="validateCode" name="validateCode"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="submit"></td>
+        <td></td>
+        <td><input type="reset" value="reset"></td>
+      </tr>
+    </table>
+  </form>
+</fieldset>
+<button type="button"><a href="/social/qq">qq登录</a></button>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+  $("#sms").click(function () {
+    $.ajax({
+      type: "get",
+      url: "/code/ssm?mobile=" + $("#phone").val(),
+      success: function () {
+
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
